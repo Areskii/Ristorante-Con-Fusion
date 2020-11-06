@@ -5,25 +5,29 @@ import {
   Card,
   CardBody,
   CardHeader,
-  Media
+  Media,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
-function AboutUs(props) {
-  function RenderLeader({ leader }) {
-    return (
-      <Media className="mt-5">
-        <Media left className="mr-5">
-          <Media object src={leader.image} alt={leader.name} />
-        </Media>
-        <Media body>
-          <Media heading>{leader.name}</Media>
-          <p>{leader.designation}</p>
-          {leader.description}
-        </Media>
+function RenderLeader({ leader }) {
+  return (
+    <Media tag="li">
+      <Media left middle>
+        <Media object src={leader.image} alt={leader.name} />
       </Media>
-    );
-  }
+      <Media body className="ml-5">
+        <Media heading={leader.name}></Media>
+        <p>{leader.designation}</p>
+        <p>{leader.description}</p>
+      </Media>
+    </Media>
+  );
+}
+
+function About(props) {
+  const leaders = props.leaders.map((leader) => {
+    return <RenderLeader leader={leader} />;
+  });
 
   return (
     <div className="container">
@@ -101,15 +105,11 @@ function AboutUs(props) {
           <h2>Corporate Leadership</h2>
         </div>
         <div className="col-12">
-          <Media list>
-            {props.leaders.map(leader => (
-              <RenderLeader key={leader.id} leader={leader} />
-            ))}
-          </Media>
+          <Media list>{leaders}</Media>
         </div>
       </div>
     </div>
   );
 }
 
-export default AboutUs;
+export default About;
