@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import Home from "./HomeComponent";
 import Menu from "./MenuComponent";
 import Dishdetail from "./DishdetailComponent";
@@ -9,22 +9,16 @@ import AboutUs from "./AboutUsComponent";
 import Header from "./HeaderComponent";
 import Footer from "./FooterComponent";
 
-const mapStateToProps= state=>{
-  return{
-    dishes : state.dishes,
-    comments : state.comments,
+const mapStateToProps = state => {
+  return {
+    dishes: state.dishes,
+    comments: state.comments,
     promotions: state.promotions,
     leaders: state.leaders
-  }
-}
+  };
+};
+
 class Main extends Component {
-  constructor(props) {
-    super(props);
-
-
-  }
-
-
   render() {
     const HomePage = () => {
       return (
@@ -54,21 +48,25 @@ class Main extends Component {
     return (
       <div>
         <Header />
-        <Switch>
-          <Route path="/home" component={HomePage} />
-          <Route
-            exact
-            path="/menu"
-            component={() => <Menu dishes={this.props.dishes} />}
-          />
-          <Route exact path="/contactus" component={Contact} />} />
-          <Route path="/menu/:dishId" component={DishWithId} />
-          <Route
-            path="/aboutus"
-            component={() => <AboutUs leaders={this.props.leaders} />}
-          />
-          <Redirect to="/home" />
-        </Switch>
+        <div>
+          <Switch>
+            <Route path="/home" component={HomePage} />
+            <Route
+              exact
+              path="/aboutus"
+              component={() => <AboutUs leaders={this.props.leaders} />}
+            />
+            } />
+            <Route
+              exact
+              path="/menu"
+              component={() => <Menu dishes={this.props.dishes} />}
+            />
+            <Route path="/menu/:dishId" component={DishWithId} />
+            <Route exact path="/contactus" component={Contact} />} />
+            <Redirect to="/home" />
+          </Switch>
+        </div>
         <Footer />
       </div>
     );
