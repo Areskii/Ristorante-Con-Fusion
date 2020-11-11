@@ -22,13 +22,13 @@ class Header extends Component {
   constructor(props) {
     super(props);
 
+    this.toggleNav = this.toggleNav.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
     this.state = {
       isNavOpen: false,
       isModalOpen: false,
     };
-    this.toggleNav = this.toggleNav.bind(this);
-    this.toggleModal = this.toggleModal.bind(this);
-    this.handleLogin = this.handleLogin.bind(this);
   }
 
   toggleNav() {
@@ -42,6 +42,7 @@ class Header extends Component {
       isModalOpen: !this.state.isModalOpen,
     });
   }
+
   handleLogin(event) {
     this.toggleModal();
     alert(
@@ -73,33 +74,34 @@ class Header extends Component {
               <Nav navbar>
                 <NavItem>
                   <NavLink className="nav-link" to="/home">
-                    <span className="fa fa-home fa-lg" /> Home
+                    <span className="fa fa-home fa-lg"></span> Home
                   </NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink className="nav-link" to="/aboutus">
-                    <span className="fa fa-info fa-lg" /> About Us
+                    <span className="fa fa-info fa-lg"></span> About Us
                   </NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink className="nav-link" to="/menu">
-                    <span className="fa fa-list fa-lg" /> Menu
+                    <span className="fa fa-list fa-lg"></span> Menu
                   </NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink className="nav-link" to="/contactus">
-                    <span className="fa fa-address-card fa-lg" /> Contact Us
+                    <span className="fa fa-address-card fa-lg"></span> Contact
+                    Us
                   </NavLink>
                 </NavItem>
               </Nav>
-              <Nav className="ml-auto" navbar>
-                <NavItem>
-                  <Button outline onClick={this.toggleModal}>
-                    <span className="fa fa-sign-in fa-lg" /> Login
-                  </Button>
-                </NavItem>
-              </Nav>
             </Collapse>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <Button outline onClick={this.toggleModal}>
+                  <span className="fa fa-sign-in fa-lg"></span> Login
+                </Button>
+              </NavItem>
+            </Nav>
           </div>
         </Navbar>
         <Jumbotron>
