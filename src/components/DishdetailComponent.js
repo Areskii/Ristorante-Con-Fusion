@@ -20,6 +20,7 @@ import {
     Control,
     Errors
 } from 'react-redux-form';
+import { baseUrl } from '../shared/baseUrl';
 import { Loading } from './LoadingComponent';
 
 const required = (val) => val && val.length;
@@ -53,7 +54,7 @@ class CommentForm extends Component {
     render() {
         return (
             <React.Fragment>
-                <Button outline onClick={this.toggleModal}><i class="fa fa-pencil" aria-hidden="true"></i> Submit Comment</Button>
+                <Button outline onClick={this.toggleModal}><i className="fa fa-pencil" aria-hidden="true"></i> Submit Comment</Button>
 
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
@@ -113,7 +114,7 @@ class CommentForm extends Component {
 function RenderDish({dish}) {
     return (
         <Card>
-            <CardImg top src={dish.image} alt={dish.name} />
+            <CardImg top src={baseUrl + dish.image} alt={dish.name} />
             <CardBody>
                 <CardTitle>{dish.name}</CardTitle>
                 <CardText>{dish.description}</CardText>
