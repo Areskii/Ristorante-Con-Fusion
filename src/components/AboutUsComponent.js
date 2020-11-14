@@ -9,24 +9,24 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
-function RenderLeader({ leader }) {
+const RenderLeader = ({ leader }) => {
   return (
-    <Media tag="li">
-      <Media left middle>
+    <Media className="row leader-item">
+      <Media left className="col-2 text-center">
         <Media object src={leader.image} alt={leader.name} />
       </Media>
-      <Media body className="ml-5">
-        <Media heading={leader.name}></Media>
+      <Media body className="col-10">
+        <Media heading>{leader.name}</Media>
         <p>{leader.designation}</p>
         <p>{leader.description}</p>
       </Media>
     </Media>
   );
-}
+};
 
 function About(props) {
   const leaders = props.leaders.map((leader) => {
-    return <RenderLeader leader={leader} />;
+    return <RenderLeader key={leader.id} leader={leader} />;
   });
 
   return (
@@ -105,7 +105,9 @@ function About(props) {
           <h2>Corporate Leadership</h2>
         </div>
         <div className="col-12">
-          <Media list>{leaders}</Media>
+          <Media list className="container">
+            {leaders}
+          </Media>
         </div>
       </div>
     </div>
