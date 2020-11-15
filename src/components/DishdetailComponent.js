@@ -156,7 +156,7 @@ function RenderComments({comments, postComment, dishId}) {
     }
 }
 
-const  Dishdetail = (props) => {
+const  DishDetail = (props) => {
     if (props.isLoading) {
         return(
             <div className="container">
@@ -207,4 +207,4 @@ const  Dishdetail = (props) => {
     }
 }
 
-export default Dishdetail;
+export default DishDetail;
